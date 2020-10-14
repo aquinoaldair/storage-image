@@ -1,0 +1,42 @@
+{
+    "name": "aquinoaldair/storage-image",
+    "description": "Easy images storage for Laravel",
+    "license": "MIT",
+    "keywords": [
+        "aquinoaldair",
+        "Easy images storage for Laravel"
+    ],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Aldair",
+            "email": "aquinoaldair@hotmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.5"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "AquinoAldair\\StorageImage\\" : "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AquinoAldair\\StorageImage\\Tests\\" : "tests"
+        }
+    },
+    "extra": {
+        "laravel" : {
+            "provider" : [
+                "AquinoAldair\\StorageImage\\StorageImageServiceProvider"
+            ],
+            "aliases" : {
+                "StorageImage" : "AquinoAldair\\StorageImage\\Facades\\StorageImage"
+            }
+        }
+    }
+}
