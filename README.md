@@ -109,4 +109,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-The MIT License (MIT)(./LICENSE.md) for more information.
+[MIT](./LICENSE.md)
