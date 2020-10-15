@@ -1,3 +1,6 @@
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/aquinoaldair/storage-image.svg?style=flat-square)](https://packagist.org/packages/aquinoaldair/storage-image)
+[![Build Status](https://travis-ci.org/aquinoaldair/storage-image.svg?branch=main)](https://travis-ci.org/aquinoaldair/storage-image)
+
 # Store Image for Laravel
 
 Laravel library for easy store images.
