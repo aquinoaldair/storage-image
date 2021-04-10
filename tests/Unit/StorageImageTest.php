@@ -106,7 +106,7 @@ class StorageImageTest extends TestCase
 
         $image = UploadedFile::fake()->image('avatar.jpg');
 
-        $result = StorageImage::FormData()->store($image, "test");
+        $result = StorageImage::FromFormData()->store($image, "test");
 
         Storage::disk('public')->assertExists($result);
     }

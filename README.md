@@ -35,7 +35,7 @@ echo $file_name; // "custom_folder/jqmix7a1l6masdGasd7S.jpg"
 ```php
 $image = request()->image;
 
-$file_name = StorageImage::FormData()->store($image, "custom_folder");
+$file_name = StorageImage::FromFormData()->store($image, "custom_folder");
 ```
 
 ### Store from URL

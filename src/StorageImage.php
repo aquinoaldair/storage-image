@@ -18,7 +18,7 @@ class StorageImage
         return (new StorageImage)->select($image);
     }
 
-    public static function FormData(){
+    public static function FromFormData(){
         return self::make(new FromFormData);
     }
 
