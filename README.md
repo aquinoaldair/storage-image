@@ -25,9 +25,9 @@ use AquinoAldair\StorageImage\StorageImage;
 $image = "data:image/png;base64.....";
 
 //store image with random 20 character name in Storage disk public (storage/app/public/customFolder) 
-$file_name = StorageImage::FromBase64()->store($image, "customFolder");
+$file_name = StorageImage::FromBase64()->store($image, "custom_folder");
 
-echo $file_name; // "customFolder/jqmix7a1l6masdGasd7S.jpg"
+echo $file_name; // "custom_folder/jqmix7a1l6masdGasd7S.jpg"
 ```
 
 ### Store from FormData
@@ -35,7 +35,7 @@ echo $file_name; // "customFolder/jqmix7a1l6masdGasd7S.jpg"
 ```php
 $image = request()->image;
 
-$file_name = StorageImage::FormData()->store($image, "customFolder");
+$file_name = StorageImage::FormData()->store($image, "custom_folder");
 ```
 
 ### Store from URL
@@ -43,7 +43,7 @@ $file_name = StorageImage::FormData()->store($image, "customFolder");
 ```php
 $url = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
 
-$file_name = StorageImage::FromURL()->store(url, "customFolder");
+$file_name = StorageImage::FromURL()->store(url, "custom_folder");
 ```
 
 ### Return only string
@@ -51,7 +51,7 @@ $file_name = StorageImage::FromURL()->store(url, "customFolder");
 ```php
 $url = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
 
-$file_name = StorageImage::FromString()->store($url, "customFolder");
+$file_name = StorageImage::FromString()->store($url, "custom_folder");
 
 echo $file_name; // "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
 
@@ -67,16 +67,16 @@ namespace AquinoAldair\StorageImage\Strategies;
 
 use AquinoAldair\StorageImage\Contract\Image;
 
-class MyOwnClass implements Image
+class MyCustomClass implements Image
 {
     public function store($file, $folder = null)
     {
-        // return the implementation
+        // do something
     }
 }
-$image = "semthing";
+$image = "something";
 
-StorageImage::select(new MyOwnClass)->store($image, "ownFolder");
+StorageImage::make(new MyCustomClass)->store($image, "custom_folder");
 
 ```
 
