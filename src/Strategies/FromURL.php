@@ -11,10 +11,17 @@ use Intervention\Image\ImageManagerStatic as Intervention;
 
 class FromURL implements Image
 {
+    private $image;
 
-    public function store($file, $folder = null)
+    public function __construct($image)
     {
-        $image = Intervention::make(file_get_contents($file))->stream();
+
+        $this->image = $image;
+    }
+
+    public function store($folder = null)
+    {
+        $image = Intervention::make(file_get_contents($this->image))->stream();
 
         $name = $folder."/".Str::random('40').".jpg";
 

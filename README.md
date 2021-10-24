@@ -3,7 +3,7 @@
 
 # Store Image for Laravel
 
-Laravel library for easy store images.
+Laravel library for easy store images in public storage.
 
 ## Installation
 
@@ -25,7 +25,7 @@ use AquinoAldair\StorageImage\StorageImage;
 $image = "data:image/png;base64.....";
 
 //store image with random 20 character name in Storage disk public (storage/app/public/customFolder) 
-$file_name = StorageImage::FromBase64()->store($image, "custom_folder");
+$file_name = StorageImage::FromBase64($image)->store("custom_folder");
 
 echo $file_name; // "custom_folder/jqmix7a1l6masdGasd7S.jpg"
 ```
@@ -35,7 +35,7 @@ echo $file_name; // "custom_folder/jqmix7a1l6masdGasd7S.jpg"
 ```php
 $image = request()->image;
 
-$file_name = StorageImage::FromFormData()->store($image, "custom_folder");
+$file_name = StorageImage::FromFormData($image)->store("custom_folder");
 ```
 
 ### Store from URL
@@ -43,7 +43,7 @@ $file_name = StorageImage::FromFormData()->store($image, "custom_folder");
 ```php
 $url = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
 
-$file_name = StorageImage::FromURL()->store(url, "custom_folder");
+$file_name = StorageImage::FromURL($url)->store("custom_folder");
 ```
 
 ### Return only string
@@ -51,7 +51,7 @@ $file_name = StorageImage::FromURL()->store(url, "custom_folder");
 ```php
 $url = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
 
-$file_name = StorageImage::FromString()->store($url, "custom_folder");
+$file_name = StorageImage::FromString($url)->store("custom_folder");
 
 echo $file_name; // "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
 
@@ -69,14 +69,20 @@ use AquinoAldair\StorageImage\Contract\Image;
 
 class MyCustomClass implements Image
 {
-    public function store($file, $folder = null)
+     protected $file;
+     
+     public function __construct($file)
+     {
+         $this->file = $file;
+     }
+    public function store($folder = null)
     {
         // do something
     }
 }
 $image = "something";
 
-StorageImage::make(new MyCustomClass)->store($image, "custom_folder");
+StorageImage::make(new MyCustomClass($image))->store("custom_folder");
 
 ```
 

@@ -18,19 +18,19 @@ class StorageImage
         return (new StorageImage)->select($image);
     }
 
-    public static function FromFormData(){
-        return self::make(new FromFormData);
+    public static function FromFormData($image){
+        return self::make(new FromFormData($image));
     }
 
-    public static function FromBase64(){
-        return self::make(new FromBase64);
+    public static function FromBase64($image){
+        return self::make(new FromBase64($image));
     }
 
-    public static function FromURL(){
-        return self::make(new FromURL);
+    public static function FromURL($image){
+        return self::make(new FromURL($image));
     }
 
-    public static function FromString(){
-        return self::make(new FromString);
+    public static function FromString($image){
+        return self::make(new FromString($image));
     }
 }

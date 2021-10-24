@@ -9,8 +9,15 @@ use Illuminate\Support\Facades\Storage;
 
 class FromFormData implements Image
 {
-    public function store($file, $folder = null)
+    private $file;
+
+    public function __construct($file)
     {
-        return Storage::disk('public')->put( $folder, $file);
+        $this->file = $file;
+    }
+
+    public function store($folder = null)
+    {
+        return Storage::disk('public')->put( $folder, $this->file);
     }
 }

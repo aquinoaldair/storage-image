@@ -6,5 +6,5 @@ namespace AquinoAldair\StorageImage\Contract;
 
 interface Image
 {
-    public function store($file, $folder = null);
+    public function store($folder = null);
 }

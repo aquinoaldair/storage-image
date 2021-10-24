@@ -12,9 +12,16 @@ use Intervention\Image\ImageManagerStatic as Intervention;
 
 class FromBase64 implements Image
 {
-    public function store($file, $folder = null)
+    private $file;
+
+    public function __construct($file)
     {
-        $image = Intervention::make(base64_decode(preg_replace('#^data:image/\w+;base64,#i', '',$file)))->stream();
+        $this->file = $file;
+    }
+
+    public function store($folder = null)
+    {
+        $image = Intervention::make(base64_decode(preg_replace('#^data:image/\w+;base64,#i', '',$this->file)))->stream();
 
         $name = $folder."/".Str::random('40').".png";
 
